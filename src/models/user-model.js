@@ -2,21 +2,12 @@ import db from "../config/db.js";
 import bcrypt from "bcrypt";
 
 const userSchema = new db.Schema({
-  nome: {
-    type: String,
-    required: true,
-  },
   email: {
     type: String,
     required: true,
     unique: true,
   },
   password: {
-    type: String,
-    required: true,
-    minLength: 5,
-  },
-  confirmar_password: {
     type: String,
     required: true,
     minLength: 5,
@@ -29,24 +20,18 @@ const userSchema = new db.Schema({
   },
 });
 
-userSchema.pre("save", async function (next) {
-  if (this.password !== this.confirmar_password) {
-    console.log("Senhas diferentes");
-    // Dentro do hook o res nao pode ser usado, então lança um erro em vez de usar res
-    const error = new Error("As senhas não coincidem.");
-    error.msg = "As senhas não coincidem.";
-    //aqui passa o erro p o prox middleware
-    return next(error);
-  }
+// não precisa do next nas versões mais novas do mongoose
+userSchema.pre("save", async function () {
+  // if (this.password !== this.confirmar_password) {} // Da pra deixar essa validação só no front
 
   // Monta o hash criptografado
   this.password = await bcrypt.hash(this.password, 10);
-
-  // Remove confirmar_password antes de salvar no banco de dados
-  this.confirmar_password = undefined;
-
-  next();
 });
+
+// Define um método para a classe
+userSchema.methods.senhaCorreta = async function (senha) {
+  return await bcrypt.compare(senha, this.password);
+};
 
 const User = db.model("User", userSchema);
 
