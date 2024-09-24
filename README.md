@@ -13,7 +13,8 @@ npm i dotenv
 <!-- Framework em js -->
 npm i express 
 
-<!-- Utilizado para manipular o token  -->
+<!-- Utilizado para manipular o token  
+jmw JSON Web Token -->
 npm i jsonwebtoken 
 
 <!-- Drive do sb  -->
