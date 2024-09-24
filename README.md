@@ -21,3 +21,7 @@ npm i mongoose
 
 <!-- Para execcutar o servidor local,  dev dependence pq não usa em prod somente em desenvolvimento-->
 npm i --save-dev nodemon 
+
+<!-- gerar hash com node, não funciona no powershell roda primeiro o comando node e depois o da sequencia-->
+
+ require('crypto').randomBytes(64).toString('hex')

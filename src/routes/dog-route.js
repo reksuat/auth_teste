@@ -5,10 +5,9 @@ import {
   show,
   update,
   destroy,
-  signup,
-  login,
+
   // logado,
-} from "../controllers/user-controller.js";
+} from "../controllers/dog-controller.js";
 
 import check_token from "../middleware/check_token.js";
 import check_role from "../middleware/check_role.js"
@@ -26,8 +25,5 @@ router.get("/", check_token, check_role(["USU"]), index); // Somente usuário
 router.get("/:id", check_token, show);
 router.put("/:id", check_token, update);
 router.delete("/:id", check_token, destroy);
-
-router.post("/signup", signup);
-router.post("/login", login);
 
 export default router;
