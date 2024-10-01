@@ -26,3 +26,5 @@ npm i --save-dev nodemon
 <!-- gerar hash com node, não funciona no powershell roda primeiro o comando node e depois o da sequencia-->
 
  require('crypto').randomBytes(64).toString('hex')
+
+ 5af6a954ca353143ae7b96b23708985c1895592106e4aa7b5313ce171dd7dac9affa751732de473e979e33ee730022e7748e8620aaefec8b1efff599e73b85cb

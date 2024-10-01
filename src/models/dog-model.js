@@ -1,5 +1,4 @@
 import db from "../config/db.js";
-import bcrypt from "bcrypt";
 
 const dogSchema = new db.Schema({
   nome: {

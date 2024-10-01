@@ -10,4 +10,7 @@ app.use(e.json());
 app.use("/user", user_router);
 app.use("/dog", dog_router);
 
-app.listen(process.env.API_PORT, () => console.log("Servidor executando na porta " + process.env.API_PORT));
+const porta = 5000;
+app.listen(porta, () => {
+    console.log("Server is running.. ");
+})

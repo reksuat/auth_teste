@@ -18,9 +18,9 @@ const userSchema = new db.Schema({
   },
   tipo: {
     type: String,
-    enum: ["ADM", "USU"],
+    enum: ["ADM", "REC"],
     required: true,
-    default: "USU",
+    default: "REC",
   },
 });
 
